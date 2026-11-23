@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168 32" width="168" height="32" role="img" aria-label="LabelGuard">
+  <g fill="none" stroke-linecap="square">
+    <path d="M3 10V3h7M22 3h7v7M29 22v7h-7M10 29H3v-7" stroke="#8B98F9" stroke-width="2.4"/>
+    <rect x="10.5" y="10.5" width="11" height="11" rx="1.5" stroke="#EDF0F4" stroke-width="2.2"/>
+  </g>
+  <text x="40" y="21.5" fill="#EDF0F4" font-family="Geist, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="17" font-weight="600" letter-spacing="-0.2">LabelGuard</text>
+</svg>

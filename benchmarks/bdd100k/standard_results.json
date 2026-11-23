@@ -1,0 +1,285 @@
+{
+  "labelguard_version": "1.0.0",
+  "run_at": "2026-11-23T03:37:43+00:00",
+  "environment": {
+    "python": "3.12.10",
+    "platform": "Windows-11"
+  },
+  "dataset": {
+    "name": "BDD100K val subset (original per-image labels)",
+    "profile": "standard",
+    "images": 100,
+    "annotations": 1643,
+    "non_detection_objects_skipped": {
+      "poly2d:area": 148,
+      "poly2d:lane": 551
+    },
+    "categories": {
+      "bike": 9,
+      "bus": 14,
+      "car": 934,
+      "motor": 2,
+      "person": 101,
+      "rider": 7,
+      "traffic light": 229,
+      "traffic sign": 300,
+      "train": 1,
+      "truck": 46
+    }
+  },
+  "validation_profile": "bdd100k_detection",
+  "rules_run": 33,
+  "original": {
+    "findings": 1,
+    "by_severity": {
+      "critical": 0,
+      "warning": 1,
+      "info": 0
+    },
+    "structural": 0,
+    "heuristic": 1,
+    "by_rule": {
+      "BOX004": 1
+    },
+    "timing_ms": {
+      "parse": 145.8,
+      "validate": 133.9,
+      "total": 279.8
+    },
+    "peak_traced_python_memory_mb": 8.32,
+    "slowest_rules_ms": {
+      "BOX007": 18.8,
+      "BOX006": 18.46,
+      "BOX005": 4.55,
+      "BOX004": 4.53,
+      "BOX003": 4.43
+    },
+    "findings_for_manual_review": [
+      {
+        "rule_id": "BOX004",
+        "annotation_id": "bf76fa8e-889c317d:8",
+        "title": "Box is only 8 \u00d7 5 px",
+        "kind": "heuristic"
+      }
+    ]
+  },
+  "conversions": {
+    "coco": {
+      "conversion": {
+        "images": 100,
+        "converted_boxes": 1643,
+        "skipped": {
+          "non-detection (area)": 148,
+          "non-detection (lane)": 551
+        },
+        "errors": []
+      },
+      "comparison": {
+        "identical_within_tolerance": true,
+        "reference_images": 100,
+        "candidate_images": 100,
+        "missing_images": [],
+        "extra_images": [],
+        "dimension_mismatches": [],
+        "reference_boxes": 1643,
+        "candidate_boxes": 1643,
+        "matched_boxes": 1643,
+        "missing_boxes": 0,
+        "extra_boxes": 0,
+        "coordinate_mismatches": 0,
+        "max_abs_corner_delta_px": 0.0,
+        "category_counts_equal": true,
+        "examples": []
+      },
+      "findings": {
+        "findings": 1,
+        "by_severity": {
+          "critical": 0,
+          "warning": 1,
+          "info": 0
+        },
+        "structural": 0,
+        "heuristic": 1,
+        "by_rule": {
+          "BOX004": 1
+        }
+      }
+    },
+    "cvat_xml": {
+      "conversion": {
+        "images": 100,
+        "converted_boxes": 1643,
+        "skipped": {
+          "non-detection (area)": 148,
+          "non-detection (lane)": 551
+        },
+        "errors": []
+      },
+      "comparison": {
+        "identical_within_tolerance": true,
+        "reference_images": 100,
+        "candidate_images": 100,
+        "missing_images": [],
+        "extra_images": [],
+        "dimension_mismatches": [],
+        "reference_boxes": 1643,
+        "candidate_boxes": 1643,
+        "matched_boxes": 1643,
+        "missing_boxes": 0,
+        "extra_boxes": 0,
+        "coordinate_mismatches": 0,
+        "max_abs_corner_delta_px": 5e-05,
+        "category_counts_equal": true,
+        "examples": []
+      },
+      "findings": {
+        "findings": 1,
+        "by_severity": {
+          "critical": 0,
+          "warning": 1,
+          "info": 0
+        },
+        "structural": 0,
+        "heuristic": 1,
+        "by_rule": {
+          "BOX004": 1
+        }
+      }
+    }
+  },
+  "injected_errors": {
+    "seed": 7,
+    "per_type": 3,
+    "injections": 27,
+    "corrupted_findings": {
+      "findings": 28,
+      "by_severity": {
+        "critical": 12,
+        "warning": 13,
+        "info": 3
+      },
+      "structural": 18,
+      "heuristic": 10,
+      "by_rule": {
+        "BOX001": 3,
+        "BOX003": 3,
+        "BOX004": 1,
+        "BOX005": 3,
+        "BOX006": 3,
+        "BOX007": 3,
+        "INT002": 3,
+        "INT004": 3,
+        "INT007": 3,
+        "INT009": 3
+      }
+    },
+    "parse_and_validate_ms": 43.0,
+    "evaluation": {
+      "expected": 27,
+      "detected_unique": 28,
+      "pre_existing_excluded": 1,
+      "overall": {
+        "tp": 27,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "by_kind": {
+        "heuristic": {
+          "tp": 9,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "structural": {
+          "tp": 18,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      },
+      "by_rule": {
+        "BOX001": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "BOX003": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "BOX005": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "BOX006": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "BOX007": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "INT002": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "INT004": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "INT007": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "INT009": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      },
+      "false_negatives": [],
+      "false_positives": []
+    }
+  }
+}

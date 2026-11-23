@@ -1,0 +1,81 @@
+[server]
+headless = true
+address = "localhost"
+enableStaticServing = true
+maxUploadSize = 500
+enableXsrfProtection = true
+
+[browser]
+gatherUsageStats = false
+
+[client]
+toolbarMode = "minimal"
+showErrorDetails = "type"
+
+[runner]
+magicEnabled = false
+
+[theme]
+base = "dark"
+font = "Geist, 'Segoe UI', system-ui, sans-serif"
+codeFont = "'Geist Mono', Consolas, monospace"
+baseFontSize = 14
+baseRadius = "6px"
+buttonRadius = "6px"
+showWidgetBorder = true
+showSidebarBorder = true
+headingFontWeights = [600, 600, 600, 600, 600, 600]
+headingFontSizes = ["26px", "20px", "16px", "14px", "14px", "13px"]
+metricValueFontSize = "26px"
+
+[[theme.fontFaces]]
+family = "Geist"
+url = "app/static/fonts/geist-latin-wght-normal.woff2"
+weight = "100 900"
+
+[[theme.fontFaces]]
+family = "Geist Mono"
+url = "app/static/fonts/geist-mono-latin-wght-normal.woff2"
+weight = "100 900"
+
+[theme.dark]
+primaryColor = "#8B98F9"
+backgroundColor = "#0D0F12"
+secondaryBackgroundColor = "#171A20"
+textColor = "#EDF0F4"
+borderColor = "#272C34"
+dataframeBorderColor = "#22262D"
+dataframeHeaderBackgroundColor = "#13161B"
+linkColor = "#9AA6FF"
+codeBackgroundColor = "#13161B"
+redColor = "#E88080"
+orangeColor = "#E5B567"
+blueColor = "#7FACE3"
+greenColor = "#6CC3A9"
+violetColor = "#8B98F9"
+
+[theme.dark.sidebar]
+backgroundColor = "#121519"
+secondaryBackgroundColor = "#1A1E24"
+borderColor = "#22262D"
+
+[theme.light]
+primaryColor = "#4F5BD5"
+backgroundColor = "#F6F5F2"
+secondaryBackgroundColor = "#FFFFFF"
+textColor = "#1D2229"
+borderColor = "#DEDAD2"
+dataframeBorderColor = "#E6E2DA"
+dataframeHeaderBackgroundColor = "#EFEDE8"
+linkColor = "#3E49B8"
+codeBackgroundColor = "#EFEDE8"
+redColor = "#B93A3A"
+orangeColor = "#9A6A12"
+blueColor = "#2F6DB0"
+greenColor = "#23795F"
+violetColor = "#4F5BD5"
+
+[theme.light.sidebar]
+backgroundColor = "#EFEDE8"
+secondaryBackgroundColor = "#E6E3DC"
+borderColor = "#DEDAD2"

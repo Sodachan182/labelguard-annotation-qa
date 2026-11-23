@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-label="LabelGuard">
+  <rect width="32" height="32" rx="7" fill="#171A20"/>
+  <g fill="none" stroke-linecap="square">
+    <path d="M6 12V6h6M20 6h6v6M26 20v6h-6M12 26H6v-6" stroke="#8B98F9" stroke-width="2.4"/>
+    <rect x="12" y="12" width="8" height="8" rx="1.2" stroke="#EDF0F4" stroke-width="2"/>
+  </g>
+</svg>

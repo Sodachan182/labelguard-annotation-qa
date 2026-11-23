@@ -1,0 +1,271 @@
+{
+  "labelguard_version": "1.0.0",
+  "run_at": "2026-11-23T03:38:09+00:00",
+  "environment": {
+    "python": "3.12.10",
+    "platform": "Windows-11"
+  },
+  "dataset": {
+    "name": "BDD100K val subset (original per-image labels)",
+    "profile": "smoke",
+    "images": 20,
+    "annotations": 418,
+    "non_detection_objects_skipped": {
+      "poly2d:area": 32,
+      "poly2d:lane": 134
+    },
+    "categories": {
+      "bike": 5,
+      "bus": 2,
+      "car": 199,
+      "motor": 1,
+      "person": 42,
+      "rider": 5,
+      "traffic light": 63,
+      "traffic sign": 83,
+      "train": 1,
+      "truck": 17
+    }
+  },
+  "validation_profile": "bdd100k_detection",
+  "rules_run": 33,
+  "original": {
+    "findings": 0,
+    "by_severity": {
+      "critical": 0,
+      "warning": 0,
+      "info": 0
+    },
+    "structural": 0,
+    "heuristic": 0,
+    "by_rule": {},
+    "timing_ms": {
+      "parse": 42.2,
+      "validate": 87.0,
+      "total": 129.1
+    },
+    "peak_traced_python_memory_mb": 3.69,
+    "slowest_rules_ms": {
+      "BOX006": 5.36,
+      "BOX007": 4.81,
+      "BOX005": 1.63,
+      "BOX003": 1.45,
+      "BOX004": 1.34
+    },
+    "findings_for_manual_review": []
+  },
+  "conversions": {
+    "coco": {
+      "conversion": {
+        "images": 20,
+        "converted_boxes": 418,
+        "skipped": {
+          "non-detection (area)": 32,
+          "non-detection (lane)": 134
+        },
+        "errors": []
+      },
+      "comparison": {
+        "identical_within_tolerance": true,
+        "reference_images": 20,
+        "candidate_images": 20,
+        "missing_images": [],
+        "extra_images": [],
+        "dimension_mismatches": [],
+        "reference_boxes": 418,
+        "candidate_boxes": 418,
+        "matched_boxes": 418,
+        "missing_boxes": 0,
+        "extra_boxes": 0,
+        "coordinate_mismatches": 0,
+        "max_abs_corner_delta_px": 0.0,
+        "category_counts_equal": true,
+        "examples": []
+      },
+      "findings": {
+        "findings": 0,
+        "by_severity": {
+          "critical": 0,
+          "warning": 0,
+          "info": 0
+        },
+        "structural": 0,
+        "heuristic": 0,
+        "by_rule": {}
+      }
+    },
+    "cvat_xml": {
+      "conversion": {
+        "images": 20,
+        "converted_boxes": 418,
+        "skipped": {
+          "non-detection (area)": 32,
+          "non-detection (lane)": 134
+        },
+        "errors": []
+      },
+      "comparison": {
+        "identical_within_tolerance": true,
+        "reference_images": 20,
+        "candidate_images": 20,
+        "missing_images": [],
+        "extra_images": [],
+        "dimension_mismatches": [],
+        "reference_boxes": 418,
+        "candidate_boxes": 418,
+        "matched_boxes": 418,
+        "missing_boxes": 0,
+        "extra_boxes": 0,
+        "coordinate_mismatches": 0,
+        "max_abs_corner_delta_px": 5e-05,
+        "category_counts_equal": true,
+        "examples": []
+      },
+      "findings": {
+        "findings": 0,
+        "by_severity": {
+          "critical": 0,
+          "warning": 0,
+          "info": 0
+        },
+        "structural": 0,
+        "heuristic": 0,
+        "by_rule": {}
+      }
+    }
+  },
+  "injected_errors": {
+    "seed": 7,
+    "per_type": 3,
+    "injections": 27,
+    "corrupted_findings": {
+      "findings": 27,
+      "by_severity": {
+        "critical": 12,
+        "warning": 12,
+        "info": 3
+      },
+      "structural": 18,
+      "heuristic": 9,
+      "by_rule": {
+        "BOX001": 3,
+        "BOX003": 3,
+        "BOX005": 3,
+        "BOX006": 3,
+        "BOX007": 3,
+        "INT002": 3,
+        "INT004": 3,
+        "INT007": 3,
+        "INT009": 3
+      }
+    },
+    "parse_and_validate_ms": 10.7,
+    "evaluation": {
+      "expected": 27,
+      "detected_unique": 27,
+      "pre_existing_excluded": 0,
+      "overall": {
+        "tp": 27,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "by_kind": {
+        "heuristic": {
+          "tp": 9,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "structural": {
+          "tp": 18,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      },
+      "by_rule": {
+        "BOX001": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "BOX003": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "BOX005": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "BOX006": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "BOX007": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "INT002": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "INT004": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "INT007": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "INT009": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      },
+      "false_negatives": [],
+      "false_positives": []
+    }
+  }
+}

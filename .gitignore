@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Local Claude Code session settings (never commit)
+.claude/settings.local.json
+.claude/*.local.*
+
+# Runtime data
+.labelguard/
+labelguard_reports/
+*.log
+tmp/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+data/
+.claude/launch.json

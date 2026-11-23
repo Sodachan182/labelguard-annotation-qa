@@ -1,0 +1,176 @@
+{
+  "dataset": "BDD100K (100K images, val split) with original per-image labels",
+  "official_source": "https://github.com/bdd100k/bdd100k (docs: doc/source/download.rst)",
+  "retrieved_from": "https://huggingface.co/datasets/dronefreak/BDD100K (unofficial, license-permitted redistribution)",
+  "revision": "fea86dd9b24ea425d66b70e0fcb6ae0023b5dca5",
+  "label_release": "bdd100k_labels.zip per-image labels (2018 release; not Detection 2020)",
+  "split": "val",
+  "profile": "smoke",
+  "size": 20,
+  "seed": 1729,
+  "selection_method": "Deterministic, diversity-seeking sample.\n\n    1. One image per category in ``COVERAGE_CATEGORIES`` (rarest first).\n    2. One crowded scene (most boxes) and one sparse scene (fewest boxes, >= 1).\n    3. One image per unseen value of time of day, weather and scene.\n    4. The rest round-robin over (time of day, weather, scene) strata.\n    Metadata values are used exactly as published ('undefined' stays 'undefined').",
+  "coordinate_convention": "box2d inclusive pixel corners (width = x2 - x1 + 1)",
+  "license_notice": "BDD100K data and labels: Copyright (c) 2018. The Regents of the University of California (Regents). All Rights Reserved. Used under the BDD100K data license for educational, research and not-for-profit purposes. License: https://github.com/bdd100k/bdd100k/blob/master/doc/source/license.rst",
+  "images": [
+    {
+      "file_name": "b3432539-8f9fc466.jpg",
+      "selection_reason": "contains 'motor'",
+      "checksums": {
+        "image": "sha256:23b52defd3daa2eb436c1cc0b618ca29b324c28408203dec08a954ec1d052cb3",
+        "label": "gitsha1:29cdc9ad347cb8bcc56a58c25995b2f8f0556db2"
+      }
+    },
+    {
+      "file_name": "b3e18480-6c84e030.jpg",
+      "selection_reason": "contains 'traffic light'",
+      "checksums": {
+        "image": "sha256:e0ad921818a1b743b71d208ea4a4a77b6a7d188eb13e374c25867b09ed0f8d45",
+        "label": "gitsha1:98167d5d8f50b9ddf8c32d8647e6e21aba83f993"
+      }
+    },
+    {
+      "file_name": "b4715825-e1fbf174.jpg",
+      "selection_reason": "sparse scene",
+      "checksums": {
+        "image": "sha256:c731e8cfb648a4a76e575cd7efd9f3d3d1e31b00094cd0ade8a6699d6f940c7a",
+        "label": "gitsha1:e16b936fffbea7f7921ef2f8005820ed84914a39"
+      }
+    },
+    {
+      "file_name": "b4a63a7e-429587ed.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:2b59d2d7b43c6b1cefff47b97724f445587b368f953767d0114434a20c0c75bb",
+        "label": "gitsha1:9e206fca0be9ee8b35c3c375a902ce92d3b5689b"
+      }
+    },
+    {
+      "file_name": "b67a1d26-573dee1f.jpg",
+      "selection_reason": "weather = snowy",
+      "checksums": {
+        "image": "sha256:6e04fee5194b0e3bf09dda00b6e20c06dc75d4075087a533cf63752d37a67c5c",
+        "label": "gitsha1:f061421f7ee913592628cac014622f6dd12401e0"
+      }
+    },
+    {
+      "file_name": "b7dbe50a-3738a448.jpg",
+      "selection_reason": "weather = foggy",
+      "checksums": {
+        "image": "sha256:ccea6f3d19817bf43383c81cd9af17449adb2c48ea35eed770062d903551e6fc",
+        "label": "gitsha1:9dbdd8c977dc6077a0707372892d378b7d046635"
+      }
+    },
+    {
+      "file_name": "b84f4f83-30ec3e22.jpg",
+      "selection_reason": "contains 'truck'",
+      "checksums": {
+        "image": "sha256:19b2b6a0c590a3b9c7d97924343151624f8519eb366678bac1509263ae0f4122",
+        "label": "gitsha1:eacdfaa96865a4e059c546dc23ee54de8fd235ee"
+      }
+    },
+    {
+      "file_name": "b92c4dd3-91991711.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:13205728dd965ef576424f6bc0c2ec1b6c2e70c4cc8fcd588123c6c584196295",
+        "label": "gitsha1:4660f578d0f1728a64b478de508f91bb1a4547ae"
+      }
+    },
+    {
+      "file_name": "bb17665d-8f5794bb.jpg",
+      "selection_reason": "contains 'traffic sign'",
+      "checksums": {
+        "image": "sha256:e2aada6ec982a20f55f6fd522a8f8b8d72de5f3873134e0fb7fa32b33bad89b6",
+        "label": "gitsha1:87ec1247d999ba008ed14fd0f91056a8ff136295"
+      }
+    },
+    {
+      "file_name": "bc886d37-5b22c313.jpg",
+      "selection_reason": "timeofday = undefined",
+      "checksums": {
+        "image": "sha256:9c8b8b1e1312502c7a60b88b94645ced3f43c28c77244ac6331bac14c9d230ba",
+        "label": "gitsha1:0cd1db17b8d773c3eaf538cac4f1aee3dd63557d"
+      }
+    },
+    {
+      "file_name": "be22a1e1-cbcd82a6.jpg",
+      "selection_reason": "contains 'car'",
+      "checksums": {
+        "image": "sha256:fcde7e9aec6aca30014b3407ddaa8f8245e5b979cac1eef6233ac49c2b1127cd",
+        "label": "gitsha1:b0f6aa56f16c94636c1f1d1d50fb01add56e3100"
+      }
+    },
+    {
+      "file_name": "c43fe5b8-165b2904.jpg",
+      "selection_reason": "contains 'bus'",
+      "checksums": {
+        "image": "sha256:ef9b6fd1065767fd377fbe81e5074e106b303f12c3237bf09a0c9e8a8f2619cc",
+        "label": "gitsha1:655f00ba0f04e8ed15dba71898944767077e740a"
+      }
+    },
+    {
+      "file_name": "c58eb8da-9871eb53.jpg",
+      "selection_reason": "contains 'rider'",
+      "checksums": {
+        "image": "sha256:3766512034ddc79ea4a5010e79d178fdf3a8ca1dfd2f74489233a2a115f68ab4",
+        "label": "gitsha1:8bc1a6a13b1919c2e53012d3b01dd11cb1294c44"
+      }
+    },
+    {
+      "file_name": "c5a84acc-baf6323a.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:2fd12e99ed0df21b8862f0b4a3ac7b606fb7a820b3716061f546c3e2ec87c5a6",
+        "label": "gitsha1:687fd92e1acaec8d6870c02ad403185920afd4ce"
+      }
+    },
+    {
+      "file_name": "c63f6bb5-e23a253e.jpg",
+      "selection_reason": "contains 'train'",
+      "checksums": {
+        "image": "sha256:3982f4c2cdd096c6bc6685d6a60b645861c3c926d2e9e193153f481085ee9421",
+        "label": "gitsha1:f1ee81f09d87a9e43d2ef338feb74056176b9244"
+      }
+    },
+    {
+      "file_name": "c6758a15-21120f89.jpg",
+      "selection_reason": "contains 'person'",
+      "checksums": {
+        "image": "sha256:90da6b271343c1083a60de5a793d6fba8f149fce9bb444c28e7f712f73a71496",
+        "label": "gitsha1:412d7d75261edab78119cca4a7caae9daa44d885"
+      }
+    },
+    {
+      "file_name": "c6fe2d9d-833142b5.jpg",
+      "selection_reason": "scene = parking lot",
+      "checksums": {
+        "image": "sha256:b5b095941e458cf0e66ad328b0709a415c1121c4c8768007da5557ac81640d54",
+        "label": "gitsha1:8a2d452e9ff80bbe1c1acef6b94deeac373297fa"
+      }
+    },
+    {
+      "file_name": "c7aa5575-4706c0d1.jpg",
+      "selection_reason": "contains 'bike'",
+      "checksums": {
+        "image": "sha256:d60a32650ec74e6e8a9038c8306b3b22a60863dee294f2be0a90dc10805f25bf",
+        "label": "gitsha1:ed5ab36411856bd7dffa6d3c4cecaf59276068a0"
+      }
+    },
+    {
+      "file_name": "c84744c1-4307c1e2.jpg",
+      "selection_reason": "scene = gas stations",
+      "checksums": {
+        "image": "sha256:49ce6aa3cf89ac397c886d6b3f8b569e78da8edcc5cec1d5841a062b8f759dbe",
+        "label": "gitsha1:b818f2e8a9d6d7aca12f26f7dd01b82d281ac519"
+      }
+    },
+    {
+      "file_name": "ca1543ec-6ad48f6e.jpg",
+      "selection_reason": "crowded scene",
+      "checksums": {
+        "image": "sha256:b6a8b05465d3fe42010d123bd15279425f1696ecdc71ae87111b99ac66be4cae",
+        "label": "gitsha1:5181fded70afcb275405c29cb46780319afd9653"
+      }
+    }
+  ]
+}

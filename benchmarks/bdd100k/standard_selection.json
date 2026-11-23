@@ -1,0 +1,816 @@
+{
+  "dataset": "BDD100K (100K images, val split) with original per-image labels",
+  "official_source": "https://github.com/bdd100k/bdd100k (docs: doc/source/download.rst)",
+  "retrieved_from": "https://huggingface.co/datasets/dronefreak/BDD100K (unofficial, license-permitted redistribution)",
+  "revision": "fea86dd9b24ea425d66b70e0fcb6ae0023b5dca5",
+  "label_release": "bdd100k_labels.zip per-image labels (2018 release; not Detection 2020)",
+  "split": "val",
+  "profile": "standard",
+  "size": 100,
+  "seed": 1729,
+  "selection_method": "Deterministic, diversity-seeking sample.\n\n    1. One image per category in ``COVERAGE_CATEGORIES`` (rarest first).\n    2. One crowded scene (most boxes) and one sparse scene (fewest boxes, >= 1).\n    3. One image per unseen value of time of day, weather and scene.\n    4. The rest round-robin over (time of day, weather, scene) strata.\n    Metadata values are used exactly as published ('undefined' stays 'undefined').",
+  "coordinate_convention": "box2d inclusive pixel corners (width = x2 - x1 + 1)",
+  "license_notice": "BDD100K data and labels: Copyright (c) 2018. The Regents of the University of California (Regents). All Rights Reserved. Used under the BDD100K data license for educational, research and not-for-profit purposes. License: https://github.com/bdd100k/bdd100k/blob/master/doc/source/license.rst",
+  "images": [
+    {
+      "file_name": "b23b2649-8349d2a1.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:3e9e6af99d253180321be4f482a848fcd1a7d93372c0d01e889c3af0e9af4707",
+        "label": "gitsha1:ad83d0fa62aa08feabe50800191a74878ecf2838"
+      }
+    },
+    {
+      "file_name": "b277a772-848f75a9.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:b1d65aa963e49b2c11edf7b03cbdca5831eec359b13953d7d837a0ac3bb40171",
+        "label": "gitsha1:b85d491a4a635f7f659e203720706101e95b5132"
+      }
+    },
+    {
+      "file_name": "b27d5dcb-9230790c.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:a779673d91462bdd7755e0448c8e0edf5a5aef7ecfe3d1bd0e6616ddd2534d68",
+        "label": "gitsha1:b2e2f0c80702e8447dffbf76472e9d456945a3ed"
+      }
+    },
+    {
+      "file_name": "b2b70230-bad4ff6e.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:662712d0055f0d6d46af4a68fa9d57ae217a9bd4f698c5b4cb03297d407cd370",
+        "label": "gitsha1:4e8f04cacf17c9818b20a1263b978443686e0c46"
+      }
+    },
+    {
+      "file_name": "b3432539-8f9fc466.jpg",
+      "selection_reason": "contains 'motor'",
+      "checksums": {
+        "image": "sha256:23b52defd3daa2eb436c1cc0b618ca29b324c28408203dec08a954ec1d052cb3",
+        "label": "gitsha1:29cdc9ad347cb8bcc56a58c25995b2f8f0556db2"
+      }
+    },
+    {
+      "file_name": "b39dd7ca-a740454f.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:9f0f5ceb4a1fe8f128644dc9b904ee49399ac35c019c468b1a6c927f9d6d1fe4",
+        "label": "gitsha1:4fc0ff3026c6b9f38b5c8065e224d007a17fa596"
+      }
+    },
+    {
+      "file_name": "b3c21bae-260d0b00.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:7c941d927bbe7b9af2d9d180b7380a00b45f70ba583023d6cb508c809cc2c7bc",
+        "label": "gitsha1:e0892df1b9f89c0e7473a52c19d720ad5c524457"
+      }
+    },
+    {
+      "file_name": "b3e18480-6c84e030.jpg",
+      "selection_reason": "contains 'traffic light'",
+      "checksums": {
+        "image": "sha256:e0ad921818a1b743b71d208ea4a4a77b6a7d188eb13e374c25867b09ed0f8d45",
+        "label": "gitsha1:98167d5d8f50b9ddf8c32d8647e6e21aba83f993"
+      }
+    },
+    {
+      "file_name": "b41ace08-88fb022d.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:4022d6b34325556ae8f16a1a2481b2e4ee790e478f7b624babf76456038efe21",
+        "label": "gitsha1:d68602b2cd910cf9c7b3f7bb8b3081e2b2ac92f4"
+      }
+    },
+    {
+      "file_name": "b4475526-2f0bca11.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:5af54a6209c0ab33ae9ee432a786764a55c391862ab96cbdcd8ce5aad6ba3f8c",
+        "label": "gitsha1:a9f0e78dfdf540f3cff0627e501973f1f23c0882"
+      }
+    },
+    {
+      "file_name": "b4715825-e1fbf174.jpg",
+      "selection_reason": "sparse scene",
+      "checksums": {
+        "image": "sha256:c731e8cfb648a4a76e575cd7efd9f3d3d1e31b00094cd0ade8a6699d6f940c7a",
+        "label": "gitsha1:e16b936fffbea7f7921ef2f8005820ed84914a39"
+      }
+    },
+    {
+      "file_name": "b4a63a7e-429587ed.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:2b59d2d7b43c6b1cefff47b97724f445587b368f953767d0114434a20c0c75bb",
+        "label": "gitsha1:9e206fca0be9ee8b35c3c375a902ce92d3b5689b"
+      }
+    },
+    {
+      "file_name": "b4a63a7e-74155969.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:02870934e77518ed25e59f5a96a495b01ba662ed06305475b5185c23591f9abe",
+        "label": "gitsha1:800b6098486386cdd2376f0689cd43059336b7fc"
+      }
+    },
+    {
+      "file_name": "b4a99fcc-7870a48b.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:0b2460da153e32612c9c2bc236bd528f5eaf7750c5f68ffe95648df1aeb683c0",
+        "label": "gitsha1:771633c195c4f56e18da1b5db4657b5eb326a200"
+      }
+    },
+    {
+      "file_name": "b4d18d1a-44ae201b.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:70a4fbc7cb911c6dfaf7a97755910491f92503f7b7cea5d667348f4a5de37c7e",
+        "label": "gitsha1:2cbfec48246fe53c2d5b249d707085c574764155"
+      }
+    },
+    {
+      "file_name": "b4fe0b47-a7819060.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:9268b1857aa3a42ae47a1ae81b5bc1cef40586976abf042ab9436e877c7127aa",
+        "label": "gitsha1:33ffbab69cd31ab2559aa0835d40e7b03cc8eb93"
+      }
+    },
+    {
+      "file_name": "b56a0885-1c282ea8.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:ee2df76b6ed6f05a01fa13480e7c60f2ae6eff265c44fee70e4e3d2b4cbfd2eb",
+        "label": "gitsha1:0a8bd853f33d100852a3719d7ba297745da41a60"
+      }
+    },
+    {
+      "file_name": "b6018b92-f949cae0.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:a19aa14a9bd10db291a94fd3b8a0e687f452dc2ef4052c1c6e5ae4f2e2ed9118",
+        "label": "gitsha1:16910e25afc9bfa086def539fd837d21563dbc04"
+      }
+    },
+    {
+      "file_name": "b6241b17-301c2e2e.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:a0d16e0fb27ea4a1a6bd06624571e0a0630b5bc3c7b4285b545a6e0ad2957a26",
+        "label": "gitsha1:e8ffc0909b7d2464efb3b0d657e5d4ffd635c844"
+      }
+    },
+    {
+      "file_name": "b67a1d26-573dee1f.jpg",
+      "selection_reason": "weather = snowy",
+      "checksums": {
+        "image": "sha256:6e04fee5194b0e3bf09dda00b6e20c06dc75d4075087a533cf63752d37a67c5c",
+        "label": "gitsha1:f061421f7ee913592628cac014622f6dd12401e0"
+      }
+    },
+    {
+      "file_name": "b71cef92-3492a923.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:a2dc96a6d495db18cb5eea9459fc911b581be6b280b52f50d23ba1fb19e02dc3",
+        "label": "gitsha1:3c5372d77e47a5b11f19e9dd2485c7d54cc29d54"
+      }
+    },
+    {
+      "file_name": "b761b4a6-ba62a4ae.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:2971e703a17163e2a30361f3013d2f816cf22759b0f123b35c6cb9cde1b9cd10",
+        "label": "gitsha1:0eb9409269ad8c41416a1f9a1ddab956f77a4587"
+      }
+    },
+    {
+      "file_name": "b7b7c088-13945e4c.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:b85f01638494cad405fb0757bcdd3101b6e62ce2482c4b1c58fd71f744067343",
+        "label": "gitsha1:11ce4e36296281fba4778eaea5b016c88b1ada3a"
+      }
+    },
+    {
+      "file_name": "b7ba2ed7-7f381040.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:a64222765323f5718ff070a070897d6c832c3d56ea85f9173fe8728c8fc18de1",
+        "label": "gitsha1:ba8f1a73e813cb3c9e56939a4f4dbe738d32d24c"
+      }
+    },
+    {
+      "file_name": "b7bfad97-d095e272.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:bdc56c81dd8dd96fb402e3ca7edf28eb38b17771b065d4545049dbb9058f197c",
+        "label": "gitsha1:51585a7ffc3ba5bb4c08df0ffd77d1fe044c7473"
+      }
+    },
+    {
+      "file_name": "b7c48676-79eba8a1.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:4bb34fd3dff4ed7d824f0903de1d84241af295c15550961f6df0bc6426ab3d4e",
+        "label": "gitsha1:f155cb93f10547c7289123670bcc2a64487cb3ce"
+      }
+    },
+    {
+      "file_name": "b7d13f97-3df013fa.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:9ecf53232d27feb1fbc637292c6675943dbb53537ca4cd7b7d6ff64a781ce1b9",
+        "label": "gitsha1:109f1af4fb3198e2cfae9e09336b5cb717e2fef8"
+      }
+    },
+    {
+      "file_name": "b7dbe50a-3738a448.jpg",
+      "selection_reason": "weather = foggy",
+      "checksums": {
+        "image": "sha256:ccea6f3d19817bf43383c81cd9af17449adb2c48ea35eed770062d903551e6fc",
+        "label": "gitsha1:9dbdd8c977dc6077a0707372892d378b7d046635"
+      }
+    },
+    {
+      "file_name": "b7dc9921-fcfe3332.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:7f2ff867efc111a7236cf1bf09f66411b6f9b29b28cfd11928f78055b7c509b2",
+        "label": "gitsha1:40d0a194182ccba156f76231c6a2006e91c03a38"
+      }
+    },
+    {
+      "file_name": "b84d51df-7094c862.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:7ce848abdb00d76ba6488d78b70ab87f0aab89ca559f60fc9a541e2b3e7f80aa",
+        "label": "gitsha1:51e85722a58b604ac9e8422fd548f1e68f68d04b"
+      }
+    },
+    {
+      "file_name": "b84f4f83-30ec3e22.jpg",
+      "selection_reason": "contains 'truck'",
+      "checksums": {
+        "image": "sha256:19b2b6a0c590a3b9c7d97924343151624f8519eb366678bac1509263ae0f4122",
+        "label": "gitsha1:eacdfaa96865a4e059c546dc23ee54de8fd235ee"
+      }
+    },
+    {
+      "file_name": "b8c21917-b001727c.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:3d012db4d492f2e21c90f1f0b3acadeb2bb65c3de9bbf16a3155d662fbe967a1",
+        "label": "gitsha1:04dc42ad4f964b31af261013ea81a1c455afe119"
+      }
+    },
+    {
+      "file_name": "b92c4dd3-91991711.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:13205728dd965ef576424f6bc0c2ec1b6c2e70c4cc8fcd588123c6c584196295",
+        "label": "gitsha1:4660f578d0f1728a64b478de508f91bb1a4547ae"
+      }
+    },
+    {
+      "file_name": "b9443e30-c9275e4a.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:54a28ad80bbc22f26a59c25a72c837ba10786ee2f227cdfbf4b67872fc067040",
+        "label": "gitsha1:15cd82271f28444bc24f5091f09ac1e7e89a45bb"
+      }
+    },
+    {
+      "file_name": "b96c88de-92c2d62b.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:3dfb1c326fb40c6ca1a6e67371d226ed9d7e557b9677e43a8a81e466fe7d1a5d",
+        "label": "gitsha1:da8b52a9bb8fce292a7be9c2dc37fd9ce8ccbb75"
+      }
+    },
+    {
+      "file_name": "b976b144-844de03e.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:89ac2e31f035e1c540eaf28193fafa3e560dafd63fead986809b1532d12a4e77",
+        "label": "gitsha1:3f699fab50c58fcef5d032aba6c4acf263c821ac"
+      }
+    },
+    {
+      "file_name": "b9ca94a2-7f349303.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:6c03ae34e043cea90be355a452369eec92e405497d49d899d71ef04be20cc09c",
+        "label": "gitsha1:de4f5ac1455b04c308bf011292985ab70f8e78b2"
+      }
+    },
+    {
+      "file_name": "b9cd5de4-5614ed70.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:cfaffe2f92f461c1925af8c687b368e877db0f9038275395e647e457f19e4b7e",
+        "label": "gitsha1:8a50cbb7330bd4bac42485c828c35bfee2f2b283"
+      }
+    },
+    {
+      "file_name": "b9d34460-68942f09.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:9a551cfe3753968fd9c9f25f5a33141929e3e1762703b8a2851fb717878d7644",
+        "label": "gitsha1:19c661ca596e159588c1412c2a7c5bd9045cc182"
+      }
+    },
+    {
+      "file_name": "ba3878a5-a6be090b.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:8fdacba0893e830361d2bf3daf9fb07890010c561f61f9c84a3a100dd1c62d92",
+        "label": "gitsha1:aa84ac0e43a08bd0767bdadaad2e4404f953cdd0"
+      }
+    },
+    {
+      "file_name": "ba5c759c-2bfd1d3c.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:6b765954ef88114b449ab7979bacf12a032c7df1f935fe1da4d18434cde196d3",
+        "label": "gitsha1:c00a6df0f69b3b59f58920e1a3694594c27901ce"
+      }
+    },
+    {
+      "file_name": "bafb04fb-119f164b.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:18ae524c7fd5acdaaf439e55e3c0027bf7636d900b82646d5643ca60fa2a79e6",
+        "label": "gitsha1:9b52a181c1a5036bba5c1c5d000006971e4c5b15"
+      }
+    },
+    {
+      "file_name": "bb17665d-8f5794bb.jpg",
+      "selection_reason": "contains 'traffic sign'",
+      "checksums": {
+        "image": "sha256:e2aada6ec982a20f55f6fd522a8f8b8d72de5f3873134e0fb7fa32b33bad89b6",
+        "label": "gitsha1:87ec1247d999ba008ed14fd0f91056a8ff136295"
+      }
+    },
+    {
+      "file_name": "bb269a85-bd43ab11.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:41a082920f00a189e97af752d6fd1d9f81971c269018e0229fa762ea904e946a",
+        "label": "gitsha1:ae4107b5ce87159a1ee6e7551ac19de27d9d7506"
+      }
+    },
+    {
+      "file_name": "bb49071c-4b99a704.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:1f23442de08c564f0bf543d2f16d6d380495a68a2fb85b4983defdd352feb31c",
+        "label": "gitsha1:9f0b744ee65dc4abee4f919275b9cba0a873f380"
+      }
+    },
+    {
+      "file_name": "bbb46ace-1e415c05.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:b0e0e5674fecf483f8476d1d4dee6ffed283e755995076477f51148e01e259fa",
+        "label": "gitsha1:050ac7723c5efa2222830f46dc7bdba73994e99b"
+      }
+    },
+    {
+      "file_name": "bbce4e17-9ff136be.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:917c375cf954c63634f5146f54136899afb66140a4d5724f501080de99983fd4",
+        "label": "gitsha1:6aedd7cd5fecb6dfb41293b2aa776fc8a437f5fb"
+      }
+    },
+    {
+      "file_name": "bbfcd002-865258a4.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:8237b54b52df81a6683053c486ef0555b1d69c1564084d6afceee105c398d862",
+        "label": "gitsha1:a4ab52ce8af80776cd934dfd13229b7293cc13d9"
+      }
+    },
+    {
+      "file_name": "bc208c84-18481db5.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:daa8c2b197230a9ffdb58818250ab9d64d4a7d4eada6da0a712994e677fe54d0",
+        "label": "gitsha1:cd03804a891fc88a587308f18bff0c6f70e69308"
+      }
+    },
+    {
+      "file_name": "bc886d37-5b22c313.jpg",
+      "selection_reason": "timeofday = undefined",
+      "checksums": {
+        "image": "sha256:9c8b8b1e1312502c7a60b88b94645ced3f43c28c77244ac6331bac14c9d230ba",
+        "label": "gitsha1:0cd1db17b8d773c3eaf538cac4f1aee3dd63557d"
+      }
+    },
+    {
+      "file_name": "bd8f4dfa-52cf9375.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:9b98fadd67146a1fd60382a0cbb175279c88ef6c4523dd22fcf5e2c511abb96e",
+        "label": "gitsha1:f06104dd06b23fbf043f6de87404123dcaf017be"
+      }
+    },
+    {
+      "file_name": "bd9881c7-682619d1.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:40a3f94304b128ba70411daf93228a7f266d580ef8b025335f6dfb44e28693c5",
+        "label": "gitsha1:6bd760d8f8a0c4f6c2fc12cff0218304ea020248"
+      }
+    },
+    {
+      "file_name": "be22a1e1-cbcd82a6.jpg",
+      "selection_reason": "contains 'car'",
+      "checksums": {
+        "image": "sha256:fcde7e9aec6aca30014b3407ddaa8f8245e5b979cac1eef6233ac49c2b1127cd",
+        "label": "gitsha1:b0f6aa56f16c94636c1f1d1d50fb01add56e3100"
+      }
+    },
+    {
+      "file_name": "be554fed-d4a627d0.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:280d2d583f6462c28900a6136919bf17e13317cb45ac60c008c694b3b87f92df",
+        "label": "gitsha1:ebde0b8fb8d15629d03ffe8ff5962447d2939a43"
+      }
+    },
+    {
+      "file_name": "beb53c44-3b9231ca.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:4fcbf64bf141b758b513738ff0d08498f8a864cbe0d4fd903ae509ccaf5429d7",
+        "label": "gitsha1:77cfec566068dac884313832ca0df347f7ed0b4a"
+      }
+    },
+    {
+      "file_name": "bf29e65c-53d90f54.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:dcc912b47ea291b5673a32f67538f4534cdb4ca3c2b1beeac33da04e47cf8577",
+        "label": "gitsha1:1b2079ec5a493230a7809c0981ec1e4acfa3a01d"
+      }
+    },
+    {
+      "file_name": "bf2fac72-133aa7bd.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:e598ed1b22f4dfa9cc197f4fa11e415d83900183ddc7439a7b164ba7ccb6a0cf",
+        "label": "gitsha1:4ee00179f1fd20874e4fcd8c248e57c7256250f0"
+      }
+    },
+    {
+      "file_name": "bf44f0b6-b0ca7b49.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:5bdb88d34624734fd170059c707d73790844c4a0d7e1e5e7f0d1e50187d9b121",
+        "label": "gitsha1:b9090bdf09e273394ab0951f4220c5f0c21aa9cc"
+      }
+    },
+    {
+      "file_name": "bf5e662c-dba716fd.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:b1bc98df99187dc78aca5b4c3b5647fd914204d30986cef57a96edf67a38d296",
+        "label": "gitsha1:7ac6770d8fe04cc294dedbb0d3a0f0552085ac0b"
+      }
+    },
+    {
+      "file_name": "bf76fa8e-889c317d.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:2659c4204e391c473a59466f259054e1bfbb4c5a1e41a6d9fba5cdc493d4d39a",
+        "label": "gitsha1:aab506ba1de42076e871aa6fc3b0da1557993eb8"
+      }
+    },
+    {
+      "file_name": "bf96ae83-7705add3.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:520c8a4147fa85066ddd2afeba9df736c672a5e25570aaa50d4521b61b596990",
+        "label": "gitsha1:88a8626ae91efacd07c81eceffd07e069b4118d7"
+      }
+    },
+    {
+      "file_name": "bf972758-7ae264e7.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:752bdb50f9beb4db3eb2eec91a51302ff6ffb6d5d44a16ff0bd52490c9d20ae5",
+        "label": "gitsha1:6bcd850b8b5dfa2a4cab8ecc1e6d22a5d98fe1ea"
+      }
+    },
+    {
+      "file_name": "c14c42e1-a83bad41.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:eb6c02803b0ce9fc4fa7cf2b6a2ce79fe056499f992ebeb7bd9c0abdbccb91c1",
+        "label": "gitsha1:943d9296458e775d0149aba8f10bc01be0cbb4bb"
+      }
+    },
+    {
+      "file_name": "c159a842-b245f317.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:5984781acb76b0c25831ff34bf88d8621f24863283b2251f25fd3901f95fffcc",
+        "label": "gitsha1:ebcb8c22a85e47ae888f84dab50b90cb9140541a"
+      }
+    },
+    {
+      "file_name": "c1707ab9-9321801c.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:c180fa8c53163c8ff454aec07010041a30a6c97e1b173befd4e49ac124517343",
+        "label": "gitsha1:ef0a2f44ecf2979575ca94548cb0d2820d0fb4b6"
+      }
+    },
+    {
+      "file_name": "c181581e-d2c1c633.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:8c17874ae73f443d8f057c161dcc5acc2f394ea2d6e4d72c5c7634c784d50948",
+        "label": "gitsha1:5e7aded99036eab2bb32f91bf871987859b773af"
+      }
+    },
+    {
+      "file_name": "c24e5f86-035733db.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:151886407ab0ed32446135e01189d981a0e5efeb061783fd2e8435c125174680",
+        "label": "gitsha1:f3b88b0f7a1ea790db9ab8449e2c02bed5a01fac"
+      }
+    },
+    {
+      "file_name": "c2592033-97240486.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:014902da06d53909c8c78a51ce97f25779158fb56f77fe466494ff212b6a749e",
+        "label": "gitsha1:b4d4a2acdd981c49a493e5e2d00fb2dc01b9c8fe"
+      }
+    },
+    {
+      "file_name": "c2d84b6d-5b9fc9f6.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:3dbbdf0fdbe687796be8d8fd2c64e5bb8a0af5f119827a3777ff868390e3d0f1",
+        "label": "gitsha1:7177354edc68f988a8969cf13c3a38ea9989b3ea"
+      }
+    },
+    {
+      "file_name": "c2d921c8-2d2a2c9b.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:4458f3aa19cb878114c07c6ed50e01761e7819c031fb8f80d51714fb04426cfb",
+        "label": "gitsha1:f242ef9736cc520d7ff6d869416c3460dcde8092"
+      }
+    },
+    {
+      "file_name": "c2f0d1f5-0fe37fc4.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:d9a90600b9cb63e4dd9b1128e331c4151c9f7a3a62e12a51389a3e410ccbad2f",
+        "label": "gitsha1:c0d318cfe353c2b9c4736ef1633c0e326c59ea12"
+      }
+    },
+    {
+      "file_name": "c30f959a-bd87aa16.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:3fecd5c6c7db1919bec4c02fc03ca2f90018e1e33c7fd756d4cc187086be4bb1",
+        "label": "gitsha1:0ae71e2d60b10b912db050d6573fdd058e02083f"
+      }
+    },
+    {
+      "file_name": "c327ace4-f06a47fc.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:5141beac0536291c9d4802d54bb5468f3e1e1652d1ba357585d3d9e84448481d",
+        "label": "gitsha1:d135d53605ab2c7ec07bd41600938775e597b3a9"
+      }
+    },
+    {
+      "file_name": "c389631f-34a8e513.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:f0bee1964cf6dd443783f46785a0ee6017dfd2a74885e0cb88acf059a299f532",
+        "label": "gitsha1:e8e2e334a160b5b46f82875e85f7f97ef03f27d9"
+      }
+    },
+    {
+      "file_name": "c3cd662f-228cba06.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:4a58d473f36fff7628e300f23b8bcc2438d73aabdc4f50ac785e95e64f936749",
+        "label": "gitsha1:7fb0cafc5121c761d8562ee25810a2f335cb54a6"
+      }
+    },
+    {
+      "file_name": "c43fe5b8-165b2904.jpg",
+      "selection_reason": "contains 'bus'",
+      "checksums": {
+        "image": "sha256:ef9b6fd1065767fd377fbe81e5074e106b303f12c3237bf09a0c9e8a8f2619cc",
+        "label": "gitsha1:655f00ba0f04e8ed15dba71898944767077e740a"
+      }
+    },
+    {
+      "file_name": "c4b8d344-dcbbc041.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:6eea24250af98a2aa65fd01c07d737d0c079c32e45d3c60a29735147deabdc21",
+        "label": "gitsha1:303bc96f449ef7e7728234c359314b1ea5f3d2f9"
+      }
+    },
+    {
+      "file_name": "c517c182-a162a7f9.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:1149d6cead6f0749a2df5d58125c745313798b7a246f2d183c96e9dc358b05dd",
+        "label": "gitsha1:21755a6f6fa9bbcb092927ff22fb3958a8cd2a90"
+      }
+    },
+    {
+      "file_name": "c588f35b-79bd69fe.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:1dc31d0a0e1e5ef594a2d4be9d80f8059b02d86ebb9e63688968a75efb50e7a4",
+        "label": "gitsha1:772ee19c456f8ee9ac3e02dfed55eaffbde3c250"
+      }
+    },
+    {
+      "file_name": "c58eb8da-9871eb53.jpg",
+      "selection_reason": "contains 'rider'",
+      "checksums": {
+        "image": "sha256:3766512034ddc79ea4a5010e79d178fdf3a8ca1dfd2f74489233a2a115f68ab4",
+        "label": "gitsha1:8bc1a6a13b1919c2e53012d3b01dd11cb1294c44"
+      }
+    },
+    {
+      "file_name": "c5a84acc-baf6323a.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:2fd12e99ed0df21b8862f0b4a3ac7b606fb7a820b3716061f546c3e2ec87c5a6",
+        "label": "gitsha1:687fd92e1acaec8d6870c02ad403185920afd4ce"
+      }
+    },
+    {
+      "file_name": "c5b166fd-df77bb5d.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:31d31b9c9c7495d833367e08d2008bd937932a028dce7494b52a069b856f32c6",
+        "label": "gitsha1:aadd276cd71073aac7bcc91d765e0bd432ee68ad"
+      }
+    },
+    {
+      "file_name": "c5c7c186-2f98e734.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:431d81b44c2dc9d2dca5eacf7641b6eea6cbe0b4ca35a5f3983becbdcd58a647",
+        "label": "gitsha1:af4bc3e631e900c9ba47cb75d0358110bdea6dd0"
+      }
+    },
+    {
+      "file_name": "c6352da9-dbb06c04.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:41b3b919d63ae558978fc6be95469dc3cc653af212d4d4d48701b70d2b62e4b9",
+        "label": "gitsha1:6072fdfd0f45b5756321c3256512efcf7d701f04"
+      }
+    },
+    {
+      "file_name": "c63f6bb5-e23a253e.jpg",
+      "selection_reason": "contains 'train'",
+      "checksums": {
+        "image": "sha256:3982f4c2cdd096c6bc6685d6a60b645861c3c926d2e9e193153f481085ee9421",
+        "label": "gitsha1:f1ee81f09d87a9e43d2ef338feb74056176b9244"
+      }
+    },
+    {
+      "file_name": "c6758a15-21120f89.jpg",
+      "selection_reason": "contains 'person'",
+      "checksums": {
+        "image": "sha256:90da6b271343c1083a60de5a793d6fba8f149fce9bb444c28e7f712f73a71496",
+        "label": "gitsha1:412d7d75261edab78119cca4a7caae9daa44d885"
+      }
+    },
+    {
+      "file_name": "c6fe2d9d-833142b5.jpg",
+      "selection_reason": "scene = parking lot",
+      "checksums": {
+        "image": "sha256:b5b095941e458cf0e66ad328b0709a415c1121c4c8768007da5557ac81640d54",
+        "label": "gitsha1:8a2d452e9ff80bbe1c1acef6b94deeac373297fa"
+      }
+    },
+    {
+      "file_name": "c732f53b-304559b2.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:f7fb6ccf07fe8e65be8377acbd719e64290df6a4649659831dc269907fa770de",
+        "label": "gitsha1:81ecde0ba1fb46630cac96fe97acac666eff22c1"
+      }
+    },
+    {
+      "file_name": "c74ee988-8f4b380d.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:85227a549bd1d7fb4a299bd098671d75af861d9f078b2d2dde5975ce6b28c47a",
+        "label": "gitsha1:6ebb9544ba9d0bd6c32397a5af5ef5363ebd8d8c"
+      }
+    },
+    {
+      "file_name": "c78f9fc6-efac7090.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:6c77de6957eb4fa15100d4d20acc56769b6e110e7d93543f3021cf3990bb5852",
+        "label": "gitsha1:640e502d0d67caa2d31e4825f62e26609f327ae7"
+      }
+    },
+    {
+      "file_name": "c7aa5575-4706c0d1.jpg",
+      "selection_reason": "contains 'bike'",
+      "checksums": {
+        "image": "sha256:d60a32650ec74e6e8a9038c8306b3b22a60863dee294f2be0a90dc10805f25bf",
+        "label": "gitsha1:ed5ab36411856bd7dffa6d3c4cecaf59276068a0"
+      }
+    },
+    {
+      "file_name": "c84744c1-4307c1e2.jpg",
+      "selection_reason": "scene = gas stations",
+      "checksums": {
+        "image": "sha256:49ce6aa3cf89ac397c886d6b3f8b569e78da8edcc5cec1d5841a062b8f759dbe",
+        "label": "gitsha1:b818f2e8a9d6d7aca12f26f7dd01b82d281ac519"
+      }
+    },
+    {
+      "file_name": "c889c950-6efe6d79.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:19a5bebac0a683df6f32aaef8fb443f6c6ffc6784997a001a6240c327429e868",
+        "label": "gitsha1:ae9232f3773141d5867f5c0def2ac19b083dd53f"
+      }
+    },
+    {
+      "file_name": "c8c6e143-981c8f06.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:49d73eab27279426b874d820180d560a5d553deca70ae8e5000228b7537b45b9",
+        "label": "gitsha1:4745c9cb02b7f2d0ea2179417d9fa24d43ec0e40"
+      }
+    },
+    {
+      "file_name": "c8ef6dea-eea7d4cd.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:64a09b42fdd1aa4c88e7f575cec2a1fb016bc707e2f21e642c85f62a911a03e8",
+        "label": "gitsha1:fa10112d1ce89b89fc8cf5b2029e2d82d141b5d2"
+      }
+    },
+    {
+      "file_name": "c8f962d8-e7adb2f9.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:6129fd019bc24b1a1a88258680e9bfa7eb2a45246c6dc057b05bfd03ed05cc0b",
+        "label": "gitsha1:de93037871de5ab00442316673c47ff9554200d5"
+      }
+    },
+    {
+      "file_name": "c9cf1065-e9fd4f91.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:dfeae904a11db784a306f5b8cc7078163d257a7dd3b5597e10d37d3d954287f6",
+        "label": "gitsha1:17a247aaeeddd8b13378ff5a2fe94343d8897eeb"
+      }
+    },
+    {
+      "file_name": "ca068cb6-59709029.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:0fb04f79f6cd8b842d2c6c7ba9536eae5f0bc000335604789cf5f1f4893eee45",
+        "label": "gitsha1:ea3aed57da4833015d6d1d8605245f52aebed88f"
+      }
+    },
+    {
+      "file_name": "ca1543ec-6ad48f6e.jpg",
+      "selection_reason": "crowded scene",
+      "checksums": {
+        "image": "sha256:b6a8b05465d3fe42010d123bd15279425f1696ecdc71ae87111b99ac66be4cae",
+        "label": "gitsha1:5181fded70afcb275405c29cb46780319afd9653"
+      }
+    },
+    {
+      "file_name": "ca3bbb0a-255bb069.jpg",
+      "selection_reason": "stratified fill",
+      "checksums": {
+        "image": "sha256:71fb13f9dbcdf9810a2f654d89a83fa27f8c11d97e15c6fd42c913656be63129",
+        "label": "gitsha1:e3c7e0bc0f0e8b3cc8384ff93bbe4625407c2892"
+      }
+    }
+  ]
+}

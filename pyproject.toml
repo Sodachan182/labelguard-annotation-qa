@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "labelguard"
+version = "1.0.0"
+description = "Offline annotation quality assurance for CVAT and COCO computer vision datasets."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.12"
+authors = [{ name = "Minh Tuan" }]
+keywords = ["computer-vision", "annotation", "cvat", "coco", "data-quality"]
+classifiers = [
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Image Recognition",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "streamlit>=1.50",
+    "pandas>=2.2",
+    "numpy>=2.0",
+    "pydantic>=2.7",
+    "pillow>=10.4",
+    "shapely>=2.0",
+    "plotly>=5.24",
+    "openpyxl>=3.1",
+    "typer>=0.12",
+    "defusedxml>=0.7.1",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.6"]
+visual = ["playwright>=1.45"]
+
+[project.scripts]
+labelguard = "labelguard.cli:app"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM", "RUF"]
+ignore = ["RUF001", "RUF002", "RUF003", "B008"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+markers = ["realdata: needs the local BDD100K subset in data/ (skipped when absent)"]
