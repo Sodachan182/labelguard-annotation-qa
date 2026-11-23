@@ -44,7 +44,8 @@
 ## Docs and publication
 - [x] README, ARCHITECTURE, VALIDATION_RULES (generated), BDD100K_INTEGRATION, REAL_WORLD_EVALUATION,
       DESIGN_SYSTEM, DEMO_SCRIPT, SECURITY
-- [ ] GitHub repository created and pushed; CI green
+- [x] Public repository Sodachan182/labelguard-annotation-qa created, description + topics set, MIT detected
+- [x] Pushed to main without force; CI green on ubuntu-latest and windows-latest; no co-author trailers
 
 ## Visual QA log
 See docs/DESIGN_SYSTEM.md, reviews 2 and 3: mojibake names, wrapped navigation, 20× zoom blur,
