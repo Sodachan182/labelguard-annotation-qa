@@ -145,7 +145,7 @@ def image_size(path: Path) -> tuple[float, float] | None:
     try:
         with Image.open(path) as im:
             return float(im.width), float(im.height)
-    except (OSError, ValueError):
+    except (OSError, ValueError, Image.DecompressionBombError):
         return None
 
 

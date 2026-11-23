@@ -68,3 +68,68 @@ def test_inspector_shows_selected_finding(xml, tmp_path):
     assert at.session_state["lg_selected_annotation"] == "0:1"
     html = " ".join(str(h.proto) for h in at.get("html"))
     assert "Box has zero area" in html
+
+
+def test_inspector_image_dropdown_switches_image(tmp_path):
+    """Regression: the dropdown choice used to be overwritten by the previous image."""
+    from tests.conftest import cvat_images
+
+    p = tmp_path / "two.xml"
+    p.write_bytes(
+        cvat_images(
+            '<image id="0" name="first.jpg" width="100" height="80">'
+            '<box label="car" xtl="10" ytl="10" xbr="10" ybr="30"/></image>'
+            '<image id="1" name="second.jpg" width="100" height="80">'
+            '<box label="car" xtl="5" ytl="5" xbr="40" ybr="30"/></image>'
+        )
+    )
+    at = AppTest.from_function(page_script, args=("inspector", str(p), str(tmp_path / "s.json")), default_timeout=60)
+    at.run()
+    assert at.session_state["lg_inspector_image"] == "0"
+    at.selectbox(key="w_insp_img").select("1").run()
+    assert not at.exception, at.exception
+    assert at.session_state["lg_inspector_image"] == "1"
+    assert at.selectbox(key="w_insp_img").value == "1"
+
+
+def shell_script(xml_a: str, xml_b: str, settings: str):
+    from pathlib import Path
+
+    import streamlit as st
+
+    from labelguard.ui import app, state
+
+    state.SETTINGS_FILE = Path(settings)
+    state.DATA_ROOT = Path(settings).parent / "data"
+    state.init()
+    if not state.entries():
+        state.add_from_path(Path(xml_a), "a")
+    elif st.session_state.get("import_b") and len(state.entries()) == 1:
+        state.add_from_path(Path(xml_b), "b")  # what the Import button does
+    app.main()
+
+
+def test_new_import_becomes_active_and_user_pick_still_wins(tmp_path):
+    """Regression: the sidebar selector used to overwrite a freshly imported dataset."""
+    from tests.conftest import cvat_images
+
+    paths = []
+    for n in ("a", "b"):
+        p = tmp_path / n / "annotations.xml"
+        p.parent.mkdir()
+        body = (
+            f'<image id="0" name="{n}.jpg" width="100" height="80">'
+            '<box label="car" xtl="1" ytl="1" xbr="9" ybr="9"/></image>'
+        )
+        p.write_bytes(cvat_images(body))
+        paths.append(str(p))
+    at = AppTest.from_function(shell_script, args=(*paths, str(tmp_path / "s.json")), default_timeout=60)
+    at.run()
+    first = at.session_state["lg_active"]
+    at.session_state["import_b"] = True
+    at.run()
+    assert not at.exception, at.exception
+    second = at.session_state["lg_active"]
+    assert second != first and at.selectbox(key="w_active_dataset").value == second
+    at.selectbox(key="w_active_dataset").select(first).run()
+    assert at.session_state["lg_active"] == first

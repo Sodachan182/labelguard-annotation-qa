@@ -193,6 +193,7 @@ def load_directory(root: str | Path, images_dir: str | Path | None = None) -> Lo
             if kind == "cvat_xml":
                 ds = parse_cvat_xml(data, rel)
             else:
+                check_size(data, rel)  # before json.loads, so the size limit really bounds memory
                 kind, doc = classify_json(data)
                 if kind == "other":
                     continue  # unrelated JSON such as a provenance manifest

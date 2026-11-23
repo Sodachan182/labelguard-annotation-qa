@@ -45,7 +45,9 @@ layout.
 ### Label release caveat
 
 The *Detection 2020* labels (`det_20`, re-checked) were not available from a reachable
-source. The 2018 per-image labels are used instead; the redistributor reports that they
+source. This was re-checked in the final audit: the official hosts were still unreachable,
+and none of 120 BDD100K-related Hugging Face dataset repositories listed a `det_20`,
+`det_val` or `det_train` file. The 2018 per-image labels are used instead; the redistributor reports that they
 agree with the 2018 combined file on `val`. LabelGuard's adapter also reads `det_20`
 files (`det_val.json`) and detects that ontology automatically.
 
@@ -129,10 +131,33 @@ installed. Everything needed is in the repository:
 | `scripts/cvat_bdd100k_e2e.py` | With `cvat-sdk`: create or reuse project "LabelGuard — BDD100K QA Benchmark", Task A (original) and Task B (corrupted copy); upload the real images; import COCO; read back shape counts; export "CVAT for images 1.1" and "COCO 1.0"; parse the exports with LabelGuard; compare with the reference; validate. Credentials come from `CVAT_USER` and `CVAT_PASSWORD` and are never printed. |
 | `scripts/test-bdd100k.ps1` | Level 2 tests and benchmark; add `-WithCvat` for level 3. |
 
-Before running, verify the current stable CVAT tag (the script defaults to `v2.22.0`) and
-install a `cvat-sdk` version matching the server. Task B can only carry injections that
-COCO can express. Non-finite coordinates and unknown categories are rejected during
-conversion and listed in `task_b_conversion`, which the script reports rather than hides.
+**Version pinning (checked 23 Nov 2026):** the latest CVAT release is **v2.83.0**
+(12 Nov 2026), and `start-cvat.ps1` defaults to it. Install the matching SDK with
+`pip install -e ".[cvat]"` (`cvat-sdk==2.83.0`). Every SDK call the script makes was
+checked against the installed 2.83.0 API: `make_client`, `projects.list/create`,
+`tasks.list`, `tasks.create_from_data(spec, resources, resource_type=…,
+annotation_path=…, annotation_format=…)` (which defaults `image_quality` to 70),
+`Task.fetch/get_annotations/export_dataset(format_name, filename, include_images=…)`.
+
+**Network exposure:** CVAT's stock compose publishes Traefik on all interfaces.
+`start-cvat.ps1` writes a compose override, outside the CVAT checkout's tracked files,
+that rebinds ports 8080/8090 to `127.0.0.1` (needs Docker Compose ≥ 2.24 for `!override`).
+This has not been exercised on a real run yet.
+
+**What is tested without a server:** `tests/test_cvat_e2e.py` runs the whole orchestration
+against a **mock** client that mimics the SDK surface and exports the uploaded COCO file
+unchanged. It checks exact Task A round trips in both export formats, the per-rule
+injected-error comparison for Task B, safe extraction of export archives, and idempotent
+re-runs (project and tasks are reused). A mock models an ideal server: a real CVAT may
+clip out-of-bounds boxes or drop zero-area shapes on import, and only a real run can show
+that.
+
+**Task B scoring:** CVAT renumbers objects, so the BDD100K object ids used by the local
+benchmark are not available after export. Task B compares *counts per rule*: expected
+injections versus findings on the export and on the uploaded reference. Only the five
+injection types COCO can carry are scored (out of bounds, zero area, duplicate, extreme
+aspect, class overlap). Non-finite coordinates, unknown categories and schema-violating
+attributes are dropped or flattened by the conversion and listed in `task_b_conversion`.
 
 ## Reproduce
 

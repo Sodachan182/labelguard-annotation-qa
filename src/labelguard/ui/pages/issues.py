@@ -73,10 +73,12 @@ def render() -> None:
         hide_index=True,
         on_select="rerun",
         selection_mode="single-row",
-        key="iss_table",
+        # A new key per dataset + filter set resets the selection, so a stale row index
+        # can never point past the filtered table.
+        key=f"iss_table_{entry.id}_{hash(tuple(view['issue_id'])) & 0xFFFFFFFF:x}",
         height="auto" if len(view) <= 12 else 520,
     )
-    rows = ev.selection.rows if ev else []
+    rows = [r for r in (ev.selection.rows if ev else []) if r < len(view)]
     if not rows:
         st.caption("Select a row to see evidence and the suggested action.")
         return

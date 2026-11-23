@@ -207,7 +207,9 @@ def render_overlay(
             pixels = Image.open(image_path)
             pixels.load()
             pixels = pixels.convert("RGB")
-        except (OSError, ValueError):
+        except (OSError, ValueError, Image.DecompressionBombError):
+            # Unreadable or oversized (decompression-bomb guard) files fall back to
+            # the annotation-only canvas instead of crashing the Inspector.
             pixels = None
     if not (width > 0 and height > 0):
         if pixels is not None:

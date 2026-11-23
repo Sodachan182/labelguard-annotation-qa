@@ -24,18 +24,23 @@ def _dataset_switcher() -> None:
             st.caption("No dataset loaded")
             return
         ids = list(entries)
+        ss = st.session_state
+        # The app state is the source of truth. If the widget differs from what was
+        # rendered last time, the user picked it; otherwise any difference comes from the
+        # app (a new import, a loaded sample) and the widget is updated to match.
+        picked = ss.get("w_active_dataset")
+        if picked in ids and picked != ss.get("lg_switcher_rendered"):
+            state.set_active(picked)
         current = state.active()
-        choice = st.selectbox(
-            "Active dataset",
-            ids,
-            index=ids.index(current.id) if current else 0,
-            format_func=lambda i: entries[i].dataset.name,
-            key="w_active_dataset",
-        )
-        if choice != st.session_state.lg_active:
-            state.set_active(choice)
-            st.rerun()
-        e = entries[choice]
+        ss["w_active_dataset"] = ss["lg_switcher_rendered"] = current.id if current else ids[0]
+        names = [entries[i].dataset.name for i in ids]
+
+        def label(i: str) -> str:
+            name = entries[i].dataset.name
+            return f"{name} · {i[-8:]}" if names.count(name) > 1 else name
+
+        st.selectbox("Active dataset", ids, format_func=label, key="w_active_dataset")
+        e = entries[ss["w_active_dataset"]]
         n = len(e.report.issues) if e.report else 0
         st.caption(f"{e.dataset.source_format.label} · {len(e.dataset.images)} images · {n} findings")
 

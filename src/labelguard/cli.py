@@ -135,10 +135,16 @@ def report(
     cfg = _config(profile, config)
     results = _load(path, cfg)
     target = out or Path("labelguard_reports")
+    as_file = out is not None and out.suffix != ""
     written = []
     for ds, rep in results:
         stem = Path(ds.name).stem.replace("/", "_") or "dataset"
-        dest = target if (out and out.suffix and len(results) == 1) else target / f"{stem}_{ds.id[-8:]}.{format.value}"
+        if as_file and len(results) == 1:
+            dest = target
+        elif as_file:  # several datasets but a file name was given: suffix it per dataset
+            dest = target.with_name(f"{target.stem}_{stem}_{ds.id[-8:]}.{format.value}")
+        else:
+            dest = target / f"{stem}_{ds.id[-8:]}.{format.value}"
         dest.parent.mkdir(parents=True, exist_ok=True)
         if format == ReportFormat.json:
             dest.write_text(to_json(rep), encoding="utf-8")
@@ -244,6 +250,39 @@ def bdd_benchmark(
     )
     for kind, c in e["by_kind"].items():
         typer.echo(f"  {kind:<10} TP {c['tp']:>3}  FP {c['fp']:>3}  FN {c['fn']:>3}")
+
+
+@bdd.command("review-export")
+def bdd_review_export(
+    profile: SubsetProfile = typer.Option(SubsetProfile.standard, "--profile"),
+    data: Path = typer.Option(Path("data/bdd100k"), "--data"),
+    out: Path = typer.Option(Path("data/reviews"), "--out"),
+    limit: int = typer.Option(40, "--limit", help="Maximum number of review candidates."),
+) -> None:
+    """Export suspicious REAL annotations for human review (decisions left empty)."""
+    from labelguard.benchmark.review import export_review
+
+    subset = data / profile.value
+    if not (subset / "labels").is_dir():
+        typer.secho(f"error: {subset} not found; run 'labelguard bdd100k fetch' first", err=True, fg="red")
+        raise typer.Exit(2)
+    sheet = export_review(subset, out / profile.value, limit)
+    typer.echo(f"Review sheet: {sheet}  (fill the 'decision' column: error / acceptable / unsure)")
+
+
+@bdd.command("review-summary")
+def bdd_review_summary(
+    profile: SubsetProfile = typer.Option(SubsetProfile.standard, "--profile"),
+    out: Path = typer.Option(Path("data/reviews"), "--out"),
+) -> None:
+    """Summarise human review decisions. Unreviewed rows are reported as pending, never guessed."""
+    from labelguard.benchmark.review import summarize_review
+
+    sheet = out / profile.value / "review_sheet.csv"
+    if not sheet.exists():
+        typer.secho(f"error: {sheet} not found; run 'labelguard bdd100k review-export'", err=True, fg="red")
+        raise typer.Exit(2)
+    typer.echo(json.dumps(summarize_review(sheet), indent=2))
 
 
 def version_callback(value: bool) -> None:

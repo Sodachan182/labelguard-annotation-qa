@@ -52,3 +52,18 @@ See docs/DESIGN_SYSTEM.md, reviews 2 and 3: mojibake names, wrapped navigation, 
 edge-clamped tags, coordinate overflow, fractional ticks, silent import failure, lost session on
 refresh, network binding, mobile sidebar overlay, mobile canvas order, split definition lists,
 pluralisation, empty table row. All were fixed and re-captured.
+
+## Final audit (23 Nov 2026)
+- [x] Reproduced: 95 → 105 tests passing, both benchmarks identical (0 / 1 findings, 27/27, exact round trips)
+- [x] Fixed: decompression-bomb crash, reused import folders mixing datasets, size limit applied after JSON
+      parsing, CLI `report --out file` with several datasets, stale table selection, CVAT/BDD image-name
+      mismatch in round-trip comparison, unchecked `extractall` in the CVAT script, Inspector dropdown ignored,
+      sidebar reverting after import, ambiguous duplicate dataset names, long file names; stale session
+      folders are now cleaned
+- [x] Detection 2020 re-investigated: no reachable authorized source; 2018 benchmark kept, versions not mixed
+- [x] Human review workflow: `bdd100k review-export` / `review-summary`; 40 real candidates exported, 0 reviewed
+- [x] CVAT: pinned to v2.83.0 / cvat-sdk 2.83.0 (API checked), localhost-only override, mock-client test
+- [ ] CVAT real server run: still blocked (no Docker, 17 GB free)
+- [ ] Human review decisions: need a person
+- [x] CI: actions/checkout@v5, actions/setup-python@v6, wheel install job; pip-audit clean
+- [x] README restructured; real walkthrough GIF of non-imagery screens (docs/DESIGN_SYSTEM.md, review 4)

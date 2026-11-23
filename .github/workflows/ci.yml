@@ -17,12 +17,12 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest]
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
           cache: pip
-      - name: Install
+      - name: Install (editable, with dev tools)
         run: |
           python -m pip install --upgrade pip
           python -m pip install -e ".[dev]"
@@ -35,3 +35,24 @@ jobs:
           labelguard --version
           labelguard rules
           labelguard profiles
+
+  package:
+    name: Wheel install check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Build wheel
+        run: |
+          python -m pip install --upgrade pip build
+          python -m build --wheel
+      - name: Install wheel into a clean virtual environment and run the CLI
+        run: |
+          python -m venv /tmp/lg
+          /tmp/lg/bin/pip install dist/*.whl
+          cd /tmp
+          /tmp/lg/bin/labelguard --version
+          /tmp/lg/bin/labelguard rules | grep -c "^[A-Z]\{3\}[0-9]\{3\}"
+          /tmp/lg/bin/python -c "import labelguard.ui.state, labelguard.benchmark.runner; print('imports ok')"

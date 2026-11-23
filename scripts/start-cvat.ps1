@@ -15,7 +15,7 @@
   .\scripts\start-cvat.ps1 -Tag v2.22.0 -CvatDir D:\cvat
 #>
 param(
-    [string]$Tag = "v2.22.0",
+    [string]$Tag = "v2.83.0",  # latest CVAT release on 2026-11-23; pair with cvat-sdk==2.83.0
     [string]$CvatDir = (Join-Path $env:USERPROFILE "labelguard-cvat"),
     [int]$MinFreeGB = 15,
     [switch]$Force
@@ -44,7 +44,18 @@ if (-not (Test-Path $CvatDir)) {
 Push-Location $CvatDir
 try {
     $env:CVAT_HOST = "localhost"
-    docker compose -p $Project up -d
+    # CVAT's stock compose publishes Traefik on all interfaces. This override (written
+    # next to the CVAT checkout, not into it) rebinds it to 127.0.0.1 only.
+    # Needs Docker Compose >= 2.24 for the !override tag. Not yet verified on a real run.
+    $override = Join-Path $CvatDir "docker-compose.labelguard-localhost.yml"
+    @"
+services:
+  traefik:
+    ports: !override
+      - "127.0.0.1:8080:8080"
+      - "127.0.0.1:8090:8090"
+"@ | Set-Content -Path $override -Encoding ascii
+    docker compose -p $Project -f docker-compose.yml -f $override up -d
     Write-Host "Waiting for http://localhost:8080/api/server/about ..."
     $ok = $false
     for ($i = 0; $i -lt 60; $i++) {

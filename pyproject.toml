@@ -32,6 +32,7 @@ dependencies = [
 [project.optional-dependencies]
 dev = ["pytest>=8", "ruff>=0.6"]
 visual = ["playwright>=1.45"]
+cvat = ["cvat-sdk==2.83.0"]
 
 [project.scripts]
 labelguard = "labelguard.cli:app"

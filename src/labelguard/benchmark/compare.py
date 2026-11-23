@@ -62,6 +62,16 @@ class Comparison:
         }
 
 
+_IMAGE_EXT = (".jpg", ".jpeg", ".png", ".bmp", ".webp", ".tif", ".tiff")
+
+
+def image_key(name: str) -> str:
+    """Match images across formats: CVAT/COCO exports write 'x.jpg' while BDD100K
+    per-image labels store 'x'. Folders and a known image extension are ignored."""
+    base = name.replace("\\", "/").split("/")[-1]
+    return base[: -len(ext)] if (ext := next((e for e in _IMAGE_EXT if base.lower().endswith(e)), "")) else base
+
+
 def _boxes_by_image(ds: Dataset) -> dict[str, list]:
     images = ds.image_by_id()
     out: dict[str, list] = defaultdict(list)
@@ -69,15 +79,14 @@ def _boxes_by_image(ds: Dataset) -> dict[str, list]:
         if a.bbox is None or not is_finite(a.bbox):
             continue
         img = images.get(a.image_id)
-        key = (img.file_name if img else a.image_id).split("/")[-1]
-        out[key].append(a)
+        out[image_key(img.file_name if img else a.image_id)].append(a)
     return out
 
 
 def compare_datasets(reference: Dataset, candidate: Dataset, tolerance_px: float = 0.01) -> Comparison:
     c = Comparison(reference_images=len(reference.images), candidate_images=len(candidate.images))
-    ref_imgs = {i.file_name.split("/")[-1]: i for i in reference.images}
-    cand_imgs = {i.file_name.split("/")[-1]: i for i in candidate.images}
+    ref_imgs = {image_key(i.file_name): i for i in reference.images}
+    cand_imgs = {image_key(i.file_name): i for i in candidate.images}
     c.missing_images = sorted(set(ref_imgs) - set(cand_imgs))
     c.extra_images = sorted(set(cand_imgs) - set(ref_imgs))
     for name in sorted(set(ref_imgs) & set(cand_imgs)):

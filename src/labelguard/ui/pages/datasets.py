@@ -104,7 +104,7 @@ def render() -> None:
             "Findings": st.column_config.NumberColumn(format="%d"),
         },
     )
-    sel = ev.selection.rows if ev else []
+    sel = [r for r in (ev.selection.rows if ev else []) if r < len(df)]
     chosen = entries[df.iloc[sel[0]]["id"]] if sel else state.active()
     if chosen is not None:
         st.html('<div style="height:8px"></div>')

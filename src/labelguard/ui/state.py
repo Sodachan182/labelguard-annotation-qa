@@ -89,10 +89,36 @@ def init() -> None:
         ss.lg_selected_annotation = None
         ss.lg_inspector_image = None
         ss.lg_config, ss.lg_prefs = _load_settings()
+        cleanup_stale_sessions()
         ss.lg_workdir = Path(tempfile.mkdtemp(prefix="labelguard-session-"))
         profile = ss.lg_prefs.get("restore_bdd_profile")
         if profile and profile in bdd_subsets():
             load_bdd_sample(profile, remember=False)
+
+
+SESSION_MAX_AGE_S = 24 * 3600
+
+
+def cleanup_stale_sessions(base: Path | None = None, max_age_s: float = SESSION_MAX_AGE_S) -> int:
+    """Delete LabelGuard session folders older than ``max_age_s`` (copies of uploads only)."""
+    import time
+
+    base = Path(base or tempfile.gettempdir())
+    removed = 0
+    for d in base.glob("labelguard-session-*"):
+        try:
+            if d.is_dir() and time.time() - d.stat().st_mtime > max_age_s:
+                shutil.rmtree(d, ignore_errors=True)
+                removed += 1
+        except OSError:
+            continue
+    return removed
+
+
+def new_workdir(base: Path, prefix: str) -> Path:
+    """A fresh, never-reused folder, so two imports can never share extracted files."""
+    base.mkdir(parents=True, exist_ok=True)
+    return Path(tempfile.mkdtemp(prefix=f"{prefix}-", dir=base))
 
 
 def entries() -> dict[str, Entry]:
@@ -149,7 +175,7 @@ def run_validation(entry: Entry, progress=None) -> QualityReport:
 def add_from_path(
     path: Path, source: str, images_dir: Path | None = None, origin: dict | None = None, validate_now: bool = True
 ) -> tuple[list[Entry], list[str]]:
-    workdir = st.session_state.lg_workdir / f"import-{len(entries()) + 1}"
+    workdir = new_workdir(st.session_state.lg_workdir, "import")
     result = load_path(path, workdir=workdir, images_dir=images_dir)
     added = []
     for ds in result.datasets:
@@ -171,8 +197,7 @@ def add_from_path(
 
 def save_uploads(files) -> Path:
     """Copy uploaded files into a fresh session folder (never touching originals)."""
-    dest = st.session_state.lg_workdir / f"upload-{datetime.now():%H%M%S%f}"
-    dest.mkdir(parents=True)
+    dest = new_workdir(st.session_state.lg_workdir, "upload")
     for f in files:
         name = Path(f.name).name  # drop any client-side path components
         (dest / name).write_bytes(f.getbuffer())

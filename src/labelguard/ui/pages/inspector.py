@@ -23,6 +23,7 @@ from labelguard.ui.styles import (
     empty_state,
     esc,
     kind_html,
+    name_html,
     page_header,
     severity_html,
 )
@@ -112,6 +113,12 @@ def _clear() -> None:
     state.clear_selection()
 
 
+def _on_image_pick() -> None:
+    """Dropdown callback. Runs before the script, so the page renders the picked image."""
+    st.session_state.lg_inspector_image = st.session_state["w_insp_img"]
+    state.clear_selection()
+
+
 def _pick_annotation(ann_id: str) -> None:
     st.session_state.lg_selected_issue = None
     st.session_state.lg_selected_annotation = ann_id
@@ -182,12 +189,13 @@ def _details(
         size = f"{img.width:g} × {img.height:g} px" if img.has_valid_size else "invalid"
         dl(
             [
-                ("File", img.file_name),
-                ("Size", size),
-                ("Size source", img.raw.get("size_source", "annotation file")),
-                *meta,
+                ("File", name_html(img.file_name, 30)),
+                ("Size", esc(size)),
+                ("Size source", esc(img.raw.get("size_source", "annotation file"))),
+                *[(k, esc(v)) for k, v in meta],
                 ("Findings", str(len(img_issues))),
-            ]
+            ],
+            raw=True,
         )
         return
     if ann is not None:
@@ -245,7 +253,7 @@ def render() -> None:
     page_header(
         "Inspector",
         "Review each finding on the image it belongs to.",
-        f"<b>{esc(img.file_name)}</b> &nbsp;/&nbsp; {esc(counter)} &nbsp;/&nbsp; "
+        f"<b>{name_html(img.file_name, 64)}</b> &nbsp;/&nbsp; {esc(counter)} &nbsp;/&nbsp; "
         f"{len(img_issues)} finding{'s' if len(img_issues) != 1 else ''} on this {unit.lower()}",
     )
 
@@ -255,10 +263,11 @@ def render() -> None:
     counts = {k: len(v) for k, v in idx["issues_by_image"].items()}
     names = {x.id: x.file_name for x in images}
     row = t1.container(horizontal=True, vertical_alignment="bottom", gap="small", key="imgnav")
-    chosen = row.selectbox(
+    row.selectbox(
         unit,
         ids,
         key="w_insp_img",
+        on_change=_on_image_pick,
         format_func=lambda i: names[i] + (f"  ({counts[i]} findings)" if counts.get(i) else ""),
     )
     row.button(
@@ -279,10 +288,6 @@ def render() -> None:
         on_click=_step_image,
         args=(images, 1),
     )
-    if chosen != img.id:
-        ss.lg_inspector_image = chosen
-        state.clear_selection()
-        st.rerun()
     ss.setdefault("w_insp_mode", prefs["overlay_mode"])
     mode = t2.segmented_control("Overlay", list(MODES), format_func=MODES.get, key="w_insp_mode") or "all"
     anns = idx["by_image"].get(img.id, [])

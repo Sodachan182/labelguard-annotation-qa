@@ -79,3 +79,20 @@ warm stone rather than an inverted dark theme.
 Final matrix: dark and light × 1920, 1440, 1366, 1024 and 390 px × six pages = 60 captures,
 0 horizontal overflow, 0 exceptions (`scripts/capture_screenshots.py`, log in
 `data/screenshots/visual_qa_log.json`).
+
+## Review 4: final audit (real BDD100K data, scripted browser checks)
+
+Checked with `scripts/inspector_checks.py` (dark and light, 1366 px) and the 60-capture
+matrix.
+
+| Found | Fix |
+|---|---|
+| Picking an image in the Inspector dropdown was undone on the next rerun | Dropdown writes through an `on_change` callback; regression test |
+| After an upload, the sidebar switched back to the previous dataset | Selector mirrors the app state and only treats real user changes as picks; regression test |
+| Two uploads with the same file name looked identical in the selector | Duplicate names get a short id suffix |
+| A 130-character file name wrapped across ten lines in the details panel | Middle ellipsis (start and distinctive end kept), full name in a tooltip |
+| A stale table selection could point past a filtered Issues table | Table key changes with the dataset and filters; indexes are bounds-checked |
+
+Verified as working: missing-image blank canvas with an honest caption; class filter
+(61 → 9 objects for traffic lights on a crowded street scene); Esc clears the selection;
+no horizontal overflow with long names.

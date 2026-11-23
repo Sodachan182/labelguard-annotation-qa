@@ -19,6 +19,19 @@ def esc(value: object) -> str:
     return html.escape(str(value), quote=True)
 
 
+def short_name(name: str, limit: int = 44) -> str:
+    """Middle-ellipsis for long file names: keeps the start and the distinctive end."""
+    if len(name) <= limit:
+        return name
+    keep = limit - 1
+    return f"{name[: keep // 2]}…{name[-(keep - keep // 2) :]}"
+
+
+def name_html(name: str, limit: int = 44) -> str:
+    """Escaped, truncated name with the full name in a tooltip."""
+    return f'<span title="{esc(name)}">{esc(short_name(name, limit))}</span>'
+
+
 def _css() -> str:
     t = tokens()
     v = "\n".join(f"  --lg-{k}: {val};" for k, val in t.items())

@@ -1,6 +1,6 @@
 {
   "labelguard_version": "1.0.0",
-  "run_at": "2026-11-23T03:37:43+00:00",
+  "run_at": "2026-11-23T04:33:38+00:00",
   "environment": {
     "python": "3.12.10",
     "platform": "Windows-11"
@@ -42,17 +42,17 @@
       "BOX004": 1
     },
     "timing_ms": {
-      "parse": 145.8,
-      "validate": 133.9,
-      "total": 279.8
+      "parse": 162.7,
+      "validate": 131.0,
+      "total": 293.7
     },
-    "peak_traced_python_memory_mb": 8.32,
+    "peak_traced_python_memory_mb": 8.07,
     "slowest_rules_ms": {
-      "BOX007": 18.8,
-      "BOX006": 18.46,
-      "BOX005": 4.55,
-      "BOX004": 4.53,
-      "BOX003": 4.43
+      "BOX006": 20.52,
+      "BOX007": 20.37,
+      "BOX003": 5.08,
+      "BOX004": 4.7,
+      "BOX005": 4.59
     },
     "findings_for_manual_review": [
       {
@@ -173,7 +173,7 @@
         "INT009": 3
       }
     },
-    "parse_and_validate_ms": 43.0,
+    "parse_and_validate_ms": 61.2,
     "evaluation": {
       "expected": 27,
       "detected_unique": 28,

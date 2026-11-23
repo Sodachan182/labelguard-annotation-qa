@@ -195,10 +195,10 @@ def render() -> None:
                 hide_index=True,
                 on_select="rerun",
                 selection_mode="single-row",
-                key="ov_table",
+                key=f"ov_table_{entry.id}_{report.generated_at.timestamp():.0f}",
                 height="auto",
             )
-            rows = ev.selection.rows if ev else []
+            rows = [r for r in (ev.selection.rows if ev else []) if r < len(top)]
             if rows:
                 issue_id = top.iloc[rows[0]]["issue_id"]
                 if st.button("Open in Inspector", type="primary", icon=":material/center_focus_strong:"):
